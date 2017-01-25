@@ -3,7 +3,10 @@ QT += qml quick webengine
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    PageModel/mainpagemodel.cpp
+    PageModel/mainpagemodel.cpp \
+    Model/Repositories/webrepository.cpp \
+    Model/Entities/web.cpp \
+    PageModel/readerpagemodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,4 +17,7 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    PageModel/mainpagemodel.h
+    PageModel/mainpagemodel.h \
+    Model/Repositories/webrepository.h \
+    Model/Entities/web.h \
+    PageModel/readerpagemodel.h
