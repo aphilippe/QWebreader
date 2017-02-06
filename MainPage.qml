@@ -7,10 +7,26 @@ Item {
 
     }
 
+    Component {
+        id: readerPage
+        ReaderPage {
+
+        }
+    }
+
+    Component {
+        id: newPage
+        NewPage {
+
+        }
+    }
+
+
     Loader {
         id: pageLoader
         anchors.fill: parent
         property bool isWebOpened: pageModel.isWebOpened
-        source: (isWebOpened) ? "ReaderPage.qml" : "NewPage.qml"
+        //source: (isWebOpened) ? "ReaderPage.qml" : "NewPage.qml"
+        sourceComponent: (isWebOpened) ? readerPage : newPage
     }
 }

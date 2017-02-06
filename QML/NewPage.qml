@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 
 Item {
+    property string url: ""
+
     Rectangle {
         id: input
         width: 200
@@ -13,7 +15,7 @@ Item {
         }
 
         TextInput {
-
+            id: field
             wrapMode: TextInput.NoWrap
             anchors {
                 fill: parent
@@ -35,5 +37,8 @@ Item {
         }
 
         text: "GO"
+        onClicked: function() {
+            url = field.text
+        }
     }
 }
