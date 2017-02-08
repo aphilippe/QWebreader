@@ -4,7 +4,9 @@ import PageModel 1.0
 Item {
     MainPageModel {
         id: pageModel
-
+        onIsWebOpenedChanged: function() {
+            pageLoader.sourceComponent = (isWebOpened) ? readerPage : newPage;
+        }
     }
 
     Component {
@@ -17,7 +19,7 @@ Item {
     Component {
         id: newPage
         NewPage {
-
+            onUrlChanged: pageModel.url = url
         }
     }
 
@@ -26,7 +28,6 @@ Item {
         id: pageLoader
         anchors.fill: parent
         property bool isWebOpened: pageModel.isWebOpened
-        //source: (isWebOpened) ? "ReaderPage.qml" : "NewPage.qml"
         sourceComponent: (isWebOpened) ? readerPage : newPage
     }
 }

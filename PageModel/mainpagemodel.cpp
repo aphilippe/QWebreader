@@ -3,7 +3,7 @@
 #include <Model/Repositories/webrepository.h>
 
 MainPageModel::MainPageModel(QObject *parent):
-    QObject(parent)
+    QObject(parent), _webOpened(false)
 {
 }
 
@@ -11,10 +11,9 @@ MainPageModel::~MainPageModel()
 {
 }
 
-bool MainPageModel::isWebOpened() const
+void MainPageModel::setUrl(QString url)
 {
-    WebRepository repo;
-    return repo.getOpenedWeb() != nullptr;
+    _url = url;
+    _webOpened = true;
+    emit isWebOpenedChanged();
 }
-
-

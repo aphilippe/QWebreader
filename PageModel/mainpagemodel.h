@@ -6,12 +6,17 @@
 class MainPageModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool isWebOpened READ isWebOpened NOTIFY isWebOpenedChanged)
+    Q_PROPERTY(bool isWebOpened MEMBER _webOpened NOTIFY isWebOpenedChanged)
+    Q_PROPERTY(QString url WRITE setUrl MEMBER _url)
 public:
     explicit MainPageModel(QObject *parent = 0);
     ~MainPageModel();
 
-    bool isWebOpened() const;
+    void setUrl(QString url);
+
+private:
+    QString _url;
+    bool _webOpened;
 
 signals:
     void isWebOpenedChanged();
