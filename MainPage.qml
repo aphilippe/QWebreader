@@ -12,14 +12,14 @@ Item {
     Component {
         id: readerPage
         ReaderPage {
-
+            web_id: pageModel.openedWebId
         }
     }
 
     Component {
         id: newPage
         NewPage {
-            onUrlChanged: pageModel.url = url
+            onUrlChanged: pageModel.onUrlChanged(url)
         }
     }
 

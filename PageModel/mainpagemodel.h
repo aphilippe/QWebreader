@@ -3,20 +3,25 @@
 
 #include <QObject>
 
+class Web;
+
 class MainPageModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool isWebOpened MEMBER _webOpened NOTIFY isWebOpenedChanged)
-    Q_PROPERTY(QString url WRITE setUrl MEMBER _url)
+    Q_PROPERTY(bool isWebOpened READ isWebOpened NOTIFY isWebOpenedChanged)
+    Q_PROPERTY(int openedWebId READ getOpenedWebId)
 public:
     explicit MainPageModel(QObject *parent = 0);
     ~MainPageModel();
 
-    void setUrl(QString url);
+    int getOpenedWebId();
+    bool isWebOpened();
+
+public slots:
+    void onUrlChanged(const QString & url);
 
 private:
-    QString _url;
-    bool _webOpened;
+    Web* _web;
 
 signals:
     void isWebOpenedChanged();

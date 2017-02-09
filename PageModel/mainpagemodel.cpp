@@ -1,9 +1,10 @@
 #include "mainpagemodel.h"
 
 #include <Model/Repositories/webrepository.h>
+#include <Model/Entities/web.h>
 
 MainPageModel::MainPageModel(QObject *parent):
-    QObject(parent), _webOpened(false)
+    QObject(parent), _web(nullptr)
 {
 }
 
@@ -11,9 +12,18 @@ MainPageModel::~MainPageModel()
 {
 }
 
-void MainPageModel::setUrl(QString url)
+int MainPageModel::getOpenedWebId()
 {
-    _url = url;
-    _webOpened = true;
+    return 10;
+}
+
+bool MainPageModel::isWebOpened()
+{
+    return this->_web != nullptr;
+}
+
+void MainPageModel::onUrlChanged(const QString &url)
+{
+    _web = new Web(url.toStdString());
     emit isWebOpenedChanged();
 }
