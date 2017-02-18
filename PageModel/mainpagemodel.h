@@ -9,7 +9,7 @@ class MainPageModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool isWebOpened READ isWebOpened NOTIFY isWebOpenedChanged)
-    Q_PROPERTY(int openedWebId READ getOpenedWebId)
+    Q_PROPERTY(int openedWebId READ getOpenedWebId NOTIFY openedWebId)
 public:
     explicit MainPageModel(QObject *parent = 0);
     ~MainPageModel();
@@ -25,6 +25,7 @@ private:
 
 signals:
     void isWebOpenedChanged();
+    void openedWebId();
 };
 
 #endif // MAINPAGEMODEL_H

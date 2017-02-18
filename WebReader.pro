@@ -6,7 +6,8 @@ SOURCES += main.cpp \
     PageModel/mainpagemodel.cpp \
     Model/Repositories/webrepository.cpp \
     Model/Entities/web.cpp \
-    PageModel/readerpagemodel.cpp
+    PageModel/readerpagemodel.cpp \
+    Model/Services/webservice.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,4 +21,5 @@ HEADERS += \
     PageModel/mainpagemodel.h \
     Model/Repositories/webrepository.h \
     Model/Entities/web.h \
-    PageModel/readerpagemodel.h
+    PageModel/readerpagemodel.h \
+    Model/Services/webservice.h

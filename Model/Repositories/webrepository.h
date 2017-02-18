@@ -8,6 +8,8 @@
 class WebRepository
 {
 public:
+    static WebRepository* instance();
+
     WebRepository();
 
     Web* getOpenedWeb();

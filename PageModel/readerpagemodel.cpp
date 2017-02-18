@@ -24,8 +24,7 @@ QUrl ReaderPageModel::url() const
 
 void ReaderPageModel::setWebId(int id)
 {
-    WebRepository repo;
-    _web = repo.getOpenedWeb();
+    _web = WebRepository::instance()->getOpenedWeb();
     emit urlChanged();
 }
 

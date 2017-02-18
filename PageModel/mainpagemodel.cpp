@@ -2,6 +2,7 @@
 
 #include <Model/Repositories/webrepository.h>
 #include <Model/Entities/web.h>
+#include <Model/Services/webservice.h>
 
 MainPageModel::MainPageModel(QObject *parent):
     QObject(parent), _web(nullptr)
@@ -24,6 +25,7 @@ bool MainPageModel::isWebOpened()
 
 void MainPageModel::onUrlChanged(const QString &url)
 {
-    _web = new Web(url.toStdString());
+    WebService service;
+    _web = service.createWebWithUrl(url.toStdString());
     emit isWebOpenedChanged();
 }
