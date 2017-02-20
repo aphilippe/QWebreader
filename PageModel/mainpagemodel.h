@@ -21,6 +21,7 @@ public:
 
 public slots:
     void onNewUrlChosed(const QString& url);
+    void onUrlUpdated(const QString& url);
 
 private:
     std::shared_ptr<Web> _web;

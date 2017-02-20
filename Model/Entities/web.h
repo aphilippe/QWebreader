@@ -9,6 +9,7 @@ public:
     Web(const std::string& url);
 
     std::string getUrl();
+    void setUrl(const std::string& url);
 
 private:
     std::string _url;

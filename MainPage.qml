@@ -13,6 +13,7 @@ Item {
         id: readerPage
         ReaderPage {
             url: pageModel.url
+            onUrlChanged: pageModel.onUrlUpdated(url)
         }
     }
 

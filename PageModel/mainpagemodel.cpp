@@ -27,3 +27,8 @@ void MainPageModel::onNewUrlChosed(const QString &url)
     _web = std::make_shared<Web>(url.toStdString());
     emit isWebOpenedChanged();
 }
+
+void MainPageModel::onUrlUpdated(const QString &url)
+{
+    _web->setUrl(url.toStdString());
+}

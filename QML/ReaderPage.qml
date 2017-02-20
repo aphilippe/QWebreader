@@ -10,6 +10,6 @@ Item {
         id: webView
         anchors.fill: parent
         settings.pluginsEnabled: true
-        onUrlChanged: console.log(url)
+        onUrlChanged: parent.url = url
     }
 }
