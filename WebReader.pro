@@ -5,9 +5,7 @@ CONFIG += c++11
 SOURCES += main.cpp \
     PageModel/mainpagemodel.cpp \
     Model/Repositories/webrepository.cpp \
-    Model/Entities/web.cpp \
-    PageModel/readerpagemodel.cpp \
-    Model/Services/webservice.cpp
+    Model/Entities/web.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,6 +18,4 @@ include(deployment.pri)
 HEADERS += \
     PageModel/mainpagemodel.h \
     Model/Repositories/webrepository.h \
-    Model/Entities/web.h \
-    PageModel/readerpagemodel.h \
-    Model/Services/webservice.h
+    Model/Entities/web.h

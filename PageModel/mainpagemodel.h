@@ -2,6 +2,7 @@
 #define MAINPAGEMODEL_H
 
 #include <QObject>
+#include <QUrl>
 
 class Web;
 
@@ -9,23 +10,24 @@ class MainPageModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool isWebOpened READ isWebOpened NOTIFY isWebOpenedChanged)
-    Q_PROPERTY(int openedWebId READ getOpenedWebId NOTIFY openedWebId)
+    Q_PROPERTY(QUrl url READ url NOTIFY urlChanged)
 public:
     explicit MainPageModel(QObject *parent = 0);
     ~MainPageModel();
 
-    int getOpenedWebId();
+
     bool isWebOpened();
+    QUrl url();
 
 public slots:
-    void onUrlChanged(const QString & url);
+    void onNewUrlChosed(const QString& url);
 
 private:
-    Web* _web;
+    std::shared_ptr<Web> _web;
 
 signals:
     void isWebOpenedChanged();
-    void openedWebId();
+    void urlChanged();
 };
 
 #endif // MAINPAGEMODEL_H
