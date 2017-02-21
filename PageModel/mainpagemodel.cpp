@@ -14,12 +14,13 @@ MainPageModel::~MainPageModel()
 
 QString MainPageModel::url()
 {
-    _web = WebRepository().getOpenedWeb();
+    WebRepository repo;
+    _web = repo.getOpenedWeb();
     if (_web != nullptr) {
-        std::string plop = _web->getUrl();
         return QString::fromStdString(_web->getUrl());
-
     }
+
+    return "";
 }
 
 void MainPageModel::onUrlUpdated(const QString &url)

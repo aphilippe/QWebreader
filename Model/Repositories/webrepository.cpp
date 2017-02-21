@@ -2,8 +2,8 @@
 
 WebRepository::WebRepository()
 {
-    _web = std::unique_ptr<Web>(new Web("http://www.mspaintadventures.com?s=6&p=005595"));
-    //_web = nullptr;
+    //_web = std::unique_ptr<Web>(new Web("http://www.mspaintadventures.com?s=6&p=005595"));
+    _web = nullptr;
 }
 
 Web* WebRepository::getOpenedWeb()
