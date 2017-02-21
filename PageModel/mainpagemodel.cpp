@@ -12,23 +12,19 @@ MainPageModel::~MainPageModel()
 {
 }
 
-bool MainPageModel::isWebOpened()
+QString MainPageModel::url()
 {
-    return this->_web != nullptr;
-}
+    _web = WebRepository().getOpenedWeb();
+    if (_web != nullptr) {
+        std::string plop = _web->getUrl();
+        return QString::fromStdString(_web->getUrl());
 
-QUrl MainPageModel::url()
-{
-    return QUrl(QString::fromStdString(_web->getUrl()));
-}
-
-void MainPageModel::onNewUrlChosed(const QString &url)
-{
-    _web = std::make_shared<Web>(url.toStdString());
-    emit isWebOpenedChanged();
+    }
 }
 
 void MainPageModel::onUrlUpdated(const QString &url)
 {
-    _web->setUrl(url.toStdString());
+    if (_web != nullptr) {
+        //_web->setUrl(url.toStdString());
+    }
 }

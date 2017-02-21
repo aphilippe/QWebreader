@@ -2,33 +2,36 @@ import QtQuick 2.0
 import PageModel 1.0
 
 Item {
+    id: mainPage
+    property string url: pageModel.url
+
     MainPageModel {
         id: pageModel
-        onIsWebOpenedChanged: function() {
-            pageLoader.sourceComponent = (isWebOpened) ? readerPage : newPage;
-        }
     }
 
     Component {
-        id: readerPage
+        id: readerPageComponent
         ReaderPage {
-            url: pageModel.url
+            id: readerPage
+            url: mainPage.url
             onUrlChanged: pageModel.onUrlUpdated(url)
         }
     }
 
     Component {
-        id: newPage
+        id: newPageComponent
         NewPage {
-            onUrlChanged: pageModel.onNewUrlChosed(url)
+            id: newPage
+            onUrlChanged: {
+                mainPage.url = url
+                pageLoader.sourceComponent = readerPageComponent
+            }
         }
     }
-
 
     Loader {
         id: pageLoader
         anchors.fill: parent
-        property bool isWebOpened: pageModel.isWebOpened
-        sourceComponent: (isWebOpened) ? readerPage : newPage
+        sourceComponent: (mainPage.url != "") ? readerPageComponent : newPageComponent
     }
 }
