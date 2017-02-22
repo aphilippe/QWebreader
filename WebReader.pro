@@ -18,4 +18,5 @@ include(deployment.pri)
 HEADERS += \
     PageModel/mainpagemodel.h \
     Model/Repositories/webrepository.h \
-    Model/Entities/web.h
+    Model/Entities/web.h \
+    Utils/ioccontainer.h
