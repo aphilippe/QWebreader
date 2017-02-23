@@ -4,6 +4,7 @@
 #include <QObject>
 
 class Web;
+class WebRepository;
 
 class MainPageModel : public QObject
 {
@@ -19,7 +20,8 @@ public slots:
     void onUrlUpdated(const QString& url);
 
 private:
-    Web* _web;
+    std::shared_ptr<Web> _web;
+    std::shared_ptr<WebRepository> _webRepo;
 
 signals:
     void urlChanged();

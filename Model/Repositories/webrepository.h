@@ -10,10 +10,11 @@ class WebRepository
 public:
     WebRepository();
 
-    Web* getOpenedWeb();
+    std::shared_ptr<Web> getOpenedWeb();
+    void save(std::shared_ptr<Web> web);
 
 private:
-    std::unique_ptr<Web> _web;
+    std::shared_ptr<Web> _web;
 };
 
 #endif // WEBREPOSITORY_H

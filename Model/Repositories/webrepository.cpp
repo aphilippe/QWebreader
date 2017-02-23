@@ -1,12 +1,27 @@
 #include "webrepository.h"
+#include <Model/DAO/webdao.h>
+#include <QJsonObject>
 
 WebRepository::WebRepository()
+    : _web(nullptr)
 {
-    _web = std::unique_ptr<Web>(new Web("http://www.mspaintadventures.com?s=6&p=005595"));
-    //_web = nullptr;
+    //_web = std::shared_ptr<Web>(new Web("http://www.mspaintadventures.com?s=6&p=005595"));
 }
 
-Web* WebRepository::getOpenedWeb()
+std::shared_ptr<Web> WebRepository::getOpenedWeb()
 {
-    return _web.get();
+    if (_web == nullptr)
+    {
+        WebDAO dao;
+        QJsonDocument document = dao.get();
+        QJsonObject object = document.object();
+        _web = std::make_shared<Web>(object["url"].toString().toStdString());
+    }
+
+    return _web;
+}
+
+void WebRepository::save(std::shared_ptr<Web> web)
+{
+    _web = web;
 }

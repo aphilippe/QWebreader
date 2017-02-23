@@ -5,7 +5,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     PageModel/mainpagemodel.cpp \
     Model/Repositories/webrepository.cpp \
-    Model/Entities/web.cpp
+    Model/Entities/web.cpp \
+    Model/DAO/webdao.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +20,5 @@ HEADERS += \
     PageModel/mainpagemodel.h \
     Model/Repositories/webrepository.h \
     Model/Entities/web.h \
-    Utils/ioccontainer.h
+    Utils/ioccontainer.h \
+    Model/DAO/webdao.h

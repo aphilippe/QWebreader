@@ -5,7 +5,7 @@
 #include <Model/Entities/web.h>
 
 MainPageModel::MainPageModel(QObject *parent):
-    QObject(parent), _web(nullptr)
+    QObject(parent), _web(nullptr), _webRepo(IOCContainer::instance().get<WebRepository>())
 {
 }
 
@@ -15,8 +15,7 @@ MainPageModel::~MainPageModel()
 
 QString MainPageModel::url()
 {
-    auto repo = IOCContainer::instance().get<WebRepository>();
-    _web = repo->getOpenedWeb();
+    _web = _webRepo->getOpenedWeb();
 
     if (_web != nullptr) {
         return QString::fromStdString(_web->getUrl());
@@ -28,6 +27,8 @@ QString MainPageModel::url()
 void MainPageModel::onUrlUpdated(const QString &url)
 {
     if (_web != nullptr) {
-        //_web->setUrl(url.toStdString());
+        _web->setUrl(url.toStdString());
+        _webRepo->save(_web);
+
     }
 }
