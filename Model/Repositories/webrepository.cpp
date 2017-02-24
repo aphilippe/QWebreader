@@ -1,6 +1,7 @@
 #include "webrepository.h"
 #include <Model/DAO/webdao.h>
 #include <QJsonObject>
+#include <QTextStream>
 
 WebRepository::WebRepository()
     : _web(nullptr)
@@ -24,4 +25,12 @@ std::shared_ptr<Web> WebRepository::getOpenedWeb()
 void WebRepository::save(std::shared_ptr<Web> web)
 {
     _web = web;
+
+    QJsonObject object;
+    object.insert("url", QJsonValue(QString::fromStdString(web->getUrl())));
+
+    QJsonDocument document(object);
+
+    WebDAO dao;
+    dao.save(document);
 }
