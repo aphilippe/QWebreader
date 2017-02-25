@@ -1,7 +1,7 @@
 #include "webdao.h"
-
-#include <QFile>
 #include <QDebug>
+#include <QFile>
+#include <QCoreApplication>
 
 WebDAO::WebDAO()
 {
@@ -10,7 +10,8 @@ WebDAO::WebDAO()
 
 QJsonDocument WebDAO::get()
 {
-    QFile file("");
+
+    QFile file(QCoreApplication::applicationDirPath().append("/save.json"));
     if (!file.open(QIODevice::ReadOnly)) {
         qWarning() << "Can not open file";
     }
@@ -22,7 +23,8 @@ QJsonDocument WebDAO::get()
 
 void WebDAO::save(const QJsonDocument &document)
 {
-    QFile file("");
+    qWarning() << QCoreApplication::applicationDirPath().append("/save.json");
+    QFile file(QCoreApplication::applicationDirPath().append("/save.json"));
     if (!file.open(QIODevice::WriteOnly)) {
         qWarning() << "Can not open file";
     }

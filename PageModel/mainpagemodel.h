@@ -2,6 +2,7 @@
 #define MAINPAGEMODEL_H
 
 #include <QObject>
+#include <memory>
 
 class Web;
 class WebRepository;
