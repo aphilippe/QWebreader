@@ -4,6 +4,7 @@
 #include <memory>
 
 #include <Model/Entities/web.h>
+#include <Model/DAO/webdao.h>
 
 class WebRepository
 {
@@ -15,6 +16,7 @@ public:
 
 private:
     std::shared_ptr<Web> _web;
+    WebDAO _dao;
 };
 
 #endif // WEBREPOSITORY_H

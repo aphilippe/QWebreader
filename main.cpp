@@ -9,10 +9,10 @@ void initializeIoc();
 
 int main(int argc, char *argv[])
 {
-    initializeIoc();
-
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+
+    initializeIoc();
 
     QtWebEngine::initialize();
 
