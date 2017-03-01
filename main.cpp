@@ -4,6 +4,7 @@
 #include <PageModel/mainpagemodel.h>
 #include <Utils/ioccontainer.h>
 #include <Model/Repositories/webrepository.h>
+#include <Model/Repositories/settingsrepository.h>
 
 void initializeIoc();
 
@@ -26,5 +27,6 @@ int main(int argc, char *argv[])
 
 void initializeIoc()
 {
+    IOCContainer::instance().add(std::make_shared<SettingsRepository>());
     IOCContainer::instance().add(std::make_shared<WebRepository>());
 }

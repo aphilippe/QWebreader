@@ -6,6 +6,8 @@
 #include <Model/Entities/web.h>
 #include <Model/DAO/webdao.h>
 
+class SettingsRepository;
+
 class WebRepository
 {
 public:
@@ -16,7 +18,8 @@ public:
 
 private:
     std::shared_ptr<Web> _web;
-    WebDAO _dao;
+    std::unique_ptr<WebDAO> _dao;
+    std::shared_ptr<SettingsRepository> _settingsRepo;
 };
 
 #endif // WEBREPOSITORY_H

@@ -6,7 +6,9 @@ SOURCES += main.cpp \
     PageModel/mainpagemodel.cpp \
     Model/Repositories/webrepository.cpp \
     Model/Entities/web.cpp \
-    Model/DAO/webdao.cpp
+    Model/DAO/webdao.cpp \
+    Model/Entities/settings.cpp \
+    Model/Repositories/settingsrepository.cpp
 
 RESOURCES += qml.qrc
 
@@ -21,4 +23,6 @@ HEADERS += \
     Model/Repositories/webrepository.h \
     Model/Entities/web.h \
     Utils/ioccontainer.h \
-    Model/DAO/webdao.h
+    Model/DAO/webdao.h \
+    Model/Entities/settings.h \
+    Model/Repositories/settingsrepository.h
