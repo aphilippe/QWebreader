@@ -1,6 +1,5 @@
 #include "webrepository.h"
 #include <QJsonObject>
-#include <QTextStream>
 #include <Utils/ioccontainer.h>
 #include <Model/Repositories/settingsrepository.h>
 #include <Model/Entities/settings.h>
@@ -9,7 +8,6 @@ WebRepository::WebRepository()
     : _web(nullptr),
       _settingsRepo(IOCContainer::instance().get<SettingsRepository>())
 {
-    //_web = std::shared_ptr<Web>(new Web("http://www.mspaintadventures.com?s=6&p=005595"));
     _dao = std::unique_ptr<WebDAO>(new WebDAO(_settingsRepo->get()->saveDirectory()));
 }
 
