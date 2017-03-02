@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     Model/Entities/web.cpp \
     Model/DAO/webdao.cpp \
     Model/Entities/settings.cpp \
-    Model/Repositories/settingsrepository.cpp
+    Model/Repositories/settingsrepository.cpp \
+    Model/DAO/settingsdao.cpp
 
 RESOURCES += qml.qrc
 
@@ -25,4 +26,5 @@ HEADERS += \
     Utils/ioccontainer.h \
     Model/DAO/webdao.h \
     Model/Entities/settings.h \
-    Model/Repositories/settingsrepository.h
+    Model/Repositories/settingsrepository.h \
+    Model/DAO/settingsdao.h
