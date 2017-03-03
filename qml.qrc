@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file alias="pages/MainPage.qml">MainPage.qml</file>
+        <file alias="pages/WebPage.qml">WebPage.qml</file>
         <file alias="pages/ReaderPage.qml">QML/ReaderPage.qml</file>
         <file alias="pages/NewPage.qml">QML/NewPage.qml</file>
     </qresource>

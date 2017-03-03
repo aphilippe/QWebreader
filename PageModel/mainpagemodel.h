@@ -7,13 +7,13 @@
 class Web;
 class WebRepository;
 
-class MainPageModel : public QObject
+class WebPageModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString url READ url NOTIFY urlChanged)
 public:
-    explicit MainPageModel(QObject *parent = 0);
-    ~MainPageModel();
+    explicit WebPageModel(QObject *parent = 0);
+    ~WebPageModel();
 
     QString url();
 

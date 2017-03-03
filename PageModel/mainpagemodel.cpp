@@ -4,16 +4,16 @@
 #include <Model/Repositories/webrepository.h>
 #include <Model/Entities/web.h>
 
-MainPageModel::MainPageModel(QObject *parent):
+WebPageModel::WebPageModel(QObject *parent):
     QObject(parent), _web(nullptr), _webRepo(IOCContainer::instance().get<WebRepository>())
 {
 }
 
-MainPageModel::~MainPageModel()
+WebPageModel::~WebPageModel()
 {
 }
 
-QString MainPageModel::url()
+QString WebPageModel::url()
 {
     _web = _webRepo->getOpenedWeb();
 
@@ -24,7 +24,7 @@ QString MainPageModel::url()
     return "";
 }
 
-void MainPageModel::onUrlUpdated(const QString &url)
+void WebPageModel::onUrlUpdated(const QString &url)
 {
     if (_web != nullptr) {
         _web->setUrl(url.toStdString());

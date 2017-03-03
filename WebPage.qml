@@ -5,7 +5,7 @@ Item {
     id: mainPage
     property string url: pageModel.url
 
-    MainPageModel {
+    WebPageModel {
         id: pageModel
     }
 

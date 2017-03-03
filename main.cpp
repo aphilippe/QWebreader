@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     QtWebEngine::initialize();
 
-    qmlRegisterType<MainPageModel>("PageModel", 1, 0, "MainPageModel");
+    qmlRegisterType<WebPageModel>("PageModel", 1, 0, "WebPageModel");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
