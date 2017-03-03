@@ -4,5 +4,6 @@
         <file alias="pages/WebPage.qml">WebPage.qml</file>
         <file alias="pages/ReaderPage.qml">QML/ReaderPage.qml</file>
         <file alias="pages/NewPage.qml">QML/NewPage.qml</file>
+        <file alias="pages/MainPage.qml">QML/MainPage.qml</file>
     </qresource>
 </RCC>

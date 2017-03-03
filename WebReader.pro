@@ -3,13 +3,14 @@ QT += qml quick webengine
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    PageModel/mainpagemodel.cpp \
     Model/Repositories/webrepository.cpp \
     Model/Entities/web.cpp \
     Model/DAO/webdao.cpp \
     Model/Entities/settings.cpp \
     Model/Repositories/settingsrepository.cpp \
-    Model/DAO/settingsdao.cpp
+    Model/DAO/settingsdao.cpp \
+    PageModel/webpagemodel.cpp \
+    PageModel/mainpagemodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,11 +21,12 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    PageModel/mainpagemodel.h \
     Model/Repositories/webrepository.h \
     Model/Entities/web.h \
     Utils/ioccontainer.h \
     Model/DAO/webdao.h \
     Model/Entities/settings.h \
     Model/Repositories/settingsrepository.h \
-    Model/DAO/settingsdao.h
+    Model/DAO/settingsdao.h \
+    PageModel/webpagemodel.h \
+    PageModel/mainpagemodel.h

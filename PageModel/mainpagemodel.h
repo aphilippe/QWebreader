@@ -4,28 +4,19 @@
 #include <QObject>
 #include <memory>
 
-class Web;
-class WebRepository;
+class SettingsRepository;
 
-class WebPageModel : public QObject
+class MainPageModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString url READ url NOTIFY urlChanged)
+    Q_PROPERTY(bool saveDirectorySet READ isSaveDirectorySet)
 public:
-    explicit WebPageModel(QObject *parent = 0);
-    ~WebPageModel();
+    explicit MainPageModel(QObject *parent = 0);
+    ~MainPageModel();
 
-    QString url();
-
-public slots:
-    void onUrlUpdated(const QString& url);
-
+    bool isSaveDirectorySet();
 private:
-    std::shared_ptr<Web> _web;
-    std::shared_ptr<WebRepository> _webRepo;
-
-signals:
-    void urlChanged();
+    std::shared_ptr<SettingsRepository> _settingsRepo;
 };
 
 #endif // MAINPAGEMODEL_H
