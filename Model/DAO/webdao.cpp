@@ -8,27 +8,25 @@ WebDAO::WebDAO(const QString& folder)
     qWarning() << folder;
 }
 
-QJsonDocument WebDAO::get()
+QByteArray WebDAO::get()
 {
 
     QFile file(this->folder().append("/save.json"));
     if (!file.open(QIODevice::ReadOnly)) {
-        qWarning() << "Can not open file";
+        return "";
     }
 
-
-    QJsonDocument document = QJsonDocument::fromJson(file.readAll());
-    return document;
+    return file.readAll();
 }
 
-void WebDAO::save(const QJsonDocument &document)
+void WebDAO::save(const QByteArray& document)
 {
     QFile file(this->folder().append("/save.json"));
     if (!file.open(QIODevice::WriteOnly)) {
         qWarning() << "Can not open file";
     }
 
-    file.write(document.toJson());
+    file.write(document);
 }
 
 QString WebDAO::folder() const

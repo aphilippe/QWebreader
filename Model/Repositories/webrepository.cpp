@@ -15,7 +15,8 @@ std::shared_ptr<Web> WebRepository::getOpenedWeb()
 {
     if (_web == nullptr)
     {
-        QJsonDocument document = _dao->get();
+        QString json = _dao->get();
+        QJsonDocument document = QJsonDocument::fromJson(json.toUtf8());
         QJsonObject object = document.object();
         _web = std::make_shared<Web>(object["url"].toString().toStdString());
     }
@@ -32,5 +33,5 @@ void WebRepository::save(std::shared_ptr<Web> web)
 
     QJsonDocument document(object);
 
-    _dao->save(document);
+    _dao->save(document.toJson());
 }

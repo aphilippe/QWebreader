@@ -8,7 +8,7 @@ SettingsDAO::SettingsDAO()
 
 }
 
-QString SettingsDAO::get()
+QByteArray SettingsDAO::get()
 {
     QFile file(QCoreApplication::applicationDirPath().append("/settings.json"));
     if (!file.open(QIODevice::ReadOnly)) {

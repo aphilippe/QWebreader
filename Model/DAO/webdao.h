@@ -8,8 +8,8 @@ class WebDAO
 public:
     WebDAO(const QString& folder);
 
-    QJsonDocument get();
-    void save(const QJsonDocument& document);
+    QByteArray get();
+    void save(const QByteArray& document);
 
     QString folder() const;
 

@@ -7,7 +7,7 @@ class SettingsDAO
 {
 public:
     SettingsDAO();
-    QString get();
+    QByteArray get();
 };
 
 #endif // SETTINGSDAO_H
