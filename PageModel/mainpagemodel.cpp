@@ -11,6 +11,5 @@ MainPageModel::~MainPageModel()
 
 bool MainPageModel::isSaveDirectorySet()
 {
-    //return _settingsRepo->get() != nullptr;
-    return false;
+    return !_settingsRepo->get()->saveDirectory().isEmpty();
 }

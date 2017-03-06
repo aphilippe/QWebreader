@@ -14,11 +14,24 @@ Settings* SettingsRepository::get()
 {
     if (_cache == nullptr) {
         SettingsDAO dao;
-        QString json = dao.get();
-        // TODO put it in an other class
-        QJsonDocument doc = QJsonDocument::fromJson(json.toUtf8());
-        QJsonObject object = doc.object();
-        _cache = std::unique_ptr<Settings>(new Settings(object["save_directory"].toString()));
+        try
+        {
+            QString json = dao.get();
+            // TODO put it in an other class
+            QJsonDocument doc = QJsonDocument::fromJson(json.toUtf8());
+            QJsonObject object = doc.object();
+            _cache = std::unique_ptr<Settings>(new Settings(object["save_directory"].toString()));
+        }
+        catch(NoFileSettingsDAOException &e)
+        {
+            _cache = std::unique_ptr<Settings>(new Settings(""));
+
+            QJsonObject object;
+            object.insert("save_directory", QJsonValue(_cache->saveDirectory()));
+            QJsonDocument document(object);
+
+            dao.save(document.toJson());
+        }
     }
     return _cache.get();
 }

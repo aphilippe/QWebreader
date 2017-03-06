@@ -12,8 +12,19 @@ QByteArray SettingsDAO::get()
 {
     QFile file(QCoreApplication::applicationDirPath().append("/settings.json"));
     if (!file.open(QIODevice::ReadOnly)) {
-        return "";
+        throw NoFileSettingsDAOException{};
     }
 
     return file.readAll();
+}
+
+void SettingsDAO::save(const QByteArray &data)
+{
+    QFile file(QCoreApplication::applicationDirPath().append("/settings.json"));
+    if(!file.open(QIODevice::WriteOnly))
+    {
+        // Do nothing
+    }
+
+    file.write(data);
 }
