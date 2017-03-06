@@ -11,6 +11,7 @@ public:
     Settings(const QString& saveDirectory);
 
     QString saveDirectory() const;
+    void setSaveDirectory(const QString &saveDirectory);
 
 private:
     QString _saveDirectory;

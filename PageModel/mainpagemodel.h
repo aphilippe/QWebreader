@@ -15,6 +15,10 @@ public:
     ~MainPageModel();
 
     bool isSaveDirectorySet();
+
+public slots:
+    void onSaveDirectoryChange(const QString& path);
+
 private:
     std::shared_ptr<SettingsRepository> _settingsRepo;
 };

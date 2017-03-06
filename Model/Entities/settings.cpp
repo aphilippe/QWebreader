@@ -8,3 +8,8 @@ QString Settings::saveDirectory() const
 {
     return _saveDirectory;
 }
+
+void Settings::setSaveDirectory(const QString &saveDirectory)
+{
+    _saveDirectory = saveDirectory;
+}

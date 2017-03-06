@@ -18,15 +18,16 @@ Item {
         selectFolder: true
         onAccepted: {
             console.log("You chose: " + fileDialog.fileUrls)
-            //Qt.quit()
+            pageModel.onSaveDirectoryChange(fileDialog.fileUrl)
         }
         onRejected: {
             console.log("Canceled")
-            //Qt.quit()
+            Qt.quit()
         }
         visible: false
     }
+
     Component.onCompleted: {
-            fileDialog.visible = !pageModel.saveDirectorySet;
+        fileDialog.visible = !pageModel.saveDirectorySet;
     }
 }

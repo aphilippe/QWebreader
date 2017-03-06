@@ -13,3 +13,9 @@ bool MainPageModel::isSaveDirectorySet()
 {
     return !_settingsRepo->get()->saveDirectory().isEmpty();
 }
+
+void MainPageModel::onSaveDirectoryChange(const QString &path)
+{
+    _settingsRepo->get()->setSaveDirectory(path);
+    _settingsRepo->save();
+}

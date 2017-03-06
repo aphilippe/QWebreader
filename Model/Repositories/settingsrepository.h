@@ -10,6 +10,7 @@ public:
     SettingsRepository();
 
     Settings* get();
+    void save();
 
 private:
     std::unique_ptr<Settings> _cache;
