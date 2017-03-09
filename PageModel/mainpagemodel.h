@@ -17,7 +17,7 @@ public:
     bool isSaveDirectorySet();
 
 public slots:
-    void onSaveDirectoryChange(const QString& path);
+    void onSaveDirectoryChange(const QUrl& path);
 
 private:
     std::shared_ptr<SettingsRepository> _settingsRepo;

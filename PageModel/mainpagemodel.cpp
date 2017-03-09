@@ -1,6 +1,7 @@
 #include "mainpagemodel.h"
 #include <Utils/ioccontainer.h>
 #include <Model/Repositories/settingsrepository.h>
+#include <QUrl>
 
 MainPageModel::MainPageModel(QObject *parent)
     : QObject(parent), _settingsRepo(IOCContainer::instance().get<SettingsRepository>())
@@ -14,8 +15,9 @@ bool MainPageModel::isSaveDirectorySet()
     return !_settingsRepo->get()->saveDirectory().isEmpty();
 }
 
-void MainPageModel::onSaveDirectoryChange(const QString &path)
+void MainPageModel::onSaveDirectoryChange(const QUrl &path)
 {
-    _settingsRepo->get()->setSaveDirectory(path);
+    QString stringPath = path.toLocalFile();
+    _settingsRepo->get()->setSaveDirectory(stringPath);
     _settingsRepo->save();
 }
