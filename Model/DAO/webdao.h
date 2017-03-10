@@ -2,13 +2,14 @@
 #define WEBDAO_H
 
 #include <QJSonDocument>
+#include <vector>
 
 class WebDAO
 {
 public:
     WebDAO(const QString& folder);
 
-    QByteArray get();
+    std::vector<QByteArray> get();
     void save(const QByteArray& document);
 
     QString folder() const;

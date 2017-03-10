@@ -6,12 +6,15 @@
 class Web
 {
 public:
-    Web(const std::string& url);
+    Web(int _index, const std::string& url);
 
     std::string getUrl();
     void setUrl(const std::string& url);
 
+    int getId() const;
+
 private:
+    int _id;
     std::string _url;
 };
 

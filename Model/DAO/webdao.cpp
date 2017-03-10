@@ -1,6 +1,7 @@
 #include "webdao.h"
 #include <QDebug>
 #include <QFile>
+#include <QDirIterator>
 
 WebDAO::WebDAO(const QString& folder)
     : _folder(folder)
@@ -8,15 +9,17 @@ WebDAO::WebDAO(const QString& folder)
     qWarning() << folder;
 }
 
-QByteArray WebDAO::get()
+std::vector<QByteArray> WebDAO::get()
 {
-
-    QFile file(this->folder().append("/save.json"));
-    if (!file.open(QIODevice::ReadOnly)) {
-        return "";
+    std::vector<QByteArray> list;
+    QDirIterator it(this->folder(), QDir::Files | QDir::Readable);
+    while(it.hasNext())
+    {
+        QFile file(it.next());
+        file.open(QIODevice::ReadOnly);
+        list.push_back(file.readAll());
     }
-
-    return file.readAll();
+    return list;
 }
 
 void WebDAO::save(const QByteArray& document)
