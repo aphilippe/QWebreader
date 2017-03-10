@@ -12,6 +12,7 @@ public:
     void save(const QByteArray& document);
 
     QString folder() const;
+    void setFolder(const QString &folder);
 
 private:
     QString _folder;

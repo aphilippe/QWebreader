@@ -3,19 +3,19 @@
 #include <Utils/ioccontainer.h>
 #include <Model/Repositories/settingsrepository.h>
 #include <Model/Entities/settings.h>
+#include <Model/DAO/webdao.h>
 
 WebRepository::WebRepository()
     : _web(nullptr),
       _settingsRepo(IOCContainer::instance().get<SettingsRepository>())
-{
-    _dao = std::unique_ptr<WebDAO>(new WebDAO(_settingsRepo->get()->saveDirectory()));
-}
+{}
 
 std::shared_ptr<Web> WebRepository::getOpenedWeb()
 {
     if (_web == nullptr)
     {
-        QString json = _dao->get();
+        WebDAO dao(_settingsRepo->get()->saveDirectory());
+        QString json = dao.get();
         QJsonDocument document = QJsonDocument::fromJson(json.toUtf8());
         QJsonObject object = document.object();
         _web = std::make_shared<Web>(object["url"].toString().toStdString());
@@ -33,5 +33,6 @@ void WebRepository::save(std::shared_ptr<Web> web)
 
     QJsonDocument document(object);
 
-    _dao->save(document.toJson());
+    WebDAO dao(_settingsRepo->get()->saveDirectory());
+    dao.save(document.toJson());
 }

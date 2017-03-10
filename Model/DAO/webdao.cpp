@@ -33,3 +33,8 @@ QString WebDAO::folder() const
 {
     return _folder;
 }
+
+void WebDAO::setFolder(const QString &folder)
+{
+    _folder = folder;
+}
