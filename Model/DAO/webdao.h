@@ -10,7 +10,7 @@ public:
     WebDAO(const QString& folder);
 
     std::vector<QByteArray> get();
-    void save(const QByteArray& document);
+    void save(const QByteArray& document, const int id);
 
     QString folder() const;
     void setFolder(const QString &folder);

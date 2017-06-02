@@ -58,5 +58,5 @@ void WebRepository::save(std::shared_ptr<Web> web)
     QJsonDocument document(object);
 
     WebDAO dao(_settingsRepo->get()->saveDirectory());
-    dao.save(document.toJson());
+    dao.save(document.toJson(), web->getId());
 }

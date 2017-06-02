@@ -22,9 +22,10 @@ std::vector<QByteArray> WebDAO::get()
     return list;
 }
 
-void WebDAO::save(const QByteArray& document)
+void WebDAO::save(const QByteArray& document, const int id)
 {
-    QFile file(this->folder().append("/save.json"));
+    QString filePath = this->folder().append("/").append(QString::number(id)).append(".json");
+    QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly)) {
         qWarning() << "Can not open file";
     }
