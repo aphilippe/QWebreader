@@ -7,7 +7,9 @@ Item {
         id: pageModel
     }
 
-    Rectangle {
+
+
+    WebListPage {
         id:leftPanel
         anchors {
             top: parent.top
@@ -16,7 +18,6 @@ Item {
         }
         height: parent.height
         width: 200
-        color: "red"
     }
 
     WebPage{

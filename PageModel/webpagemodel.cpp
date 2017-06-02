@@ -15,7 +15,7 @@ WebPageModel::~WebPageModel()
 
 QString WebPageModel::url()
 {
-    _web = _webRepo->get(1);
+    _web = _webRepo->get(2);
 
     if (_web != nullptr) {
         return QString::fromStdString(_web->getUrl());
