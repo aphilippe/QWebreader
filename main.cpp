@@ -3,6 +3,7 @@
 #include <qtwebengineglobal.h>
 #include <PageModel/webpagemodel.h>
 #include <PageModel/mainpagemodel.h>
+#include <PageModel/weblistpagemodel.h>
 #include <Utils/ioccontainer.h>
 #include <Model/Repositories/webrepository.h>
 #include <Model/Repositories/settingsrepository.h>
@@ -20,6 +21,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<WebPageModel>("PageModel", 1, 0, "WebPageModel");
     qmlRegisterType<MainPageModel>("PageModel", 1, 0, "MainPageModel");
+    qmlRegisterType<WebListPageModel>("PageModel", 1, 0, "WebListPageModel");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));

@@ -10,7 +10,8 @@ SOURCES += main.cpp \
     Model/Repositories/settingsrepository.cpp \
     Model/DAO/settingsdao.cpp \
     PageModel/webpagemodel.cpp \
-    PageModel/mainpagemodel.cpp
+    PageModel/mainpagemodel.cpp \
+    PageModel/weblistpagemodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -29,4 +30,5 @@ HEADERS += \
     Model/Repositories/settingsrepository.h \
     Model/DAO/settingsdao.h \
     PageModel/webpagemodel.h \
-    PageModel/mainpagemodel.h
+    PageModel/mainpagemodel.h \
+    PageModel/weblistpagemodel.h
