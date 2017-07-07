@@ -8,8 +8,23 @@ Item {
         id: pageModel
     }
 
-    Rectangle {
-        color: "blue";
-        anchors.fill: parent;
+    ListModel {
+        id: webs
+        ListElement {
+            name: "smbc"
+            index: 1
+        }
+        ListElement {
+            name: "Homestuck"
+            index: 2
+        }
+    }
+
+    ListView {
+        anchors.fill: parent
+        model: pageModel.webs
+        delegate : Row {
+            Text { text: modelData}
+        }
     }
 }
