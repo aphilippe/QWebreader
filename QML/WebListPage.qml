@@ -8,23 +8,28 @@ Item {
         id: pageModel
     }
 
-    ListModel {
-        id: webs
-        ListElement {
-            name: "smbc"
-            index: 1
-        }
-        ListElement {
-            name: "Homestuck"
-            index: 2
-        }
-    }
-
     ListView {
+        id: listView
         anchors.fill: parent
         model: pageModel.webs
-        delegate : Row {
-            Text { text: modelData}
+        delegate : Item {
+            width: parent.width
+            height: 55
+            Text {
+            text: modelData
         }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: listView.currentIndex = index
+            }
+        }
+        focus: true
+
+        highlight: Rectangle {
+            width: parent.width; height: 55
+            color: "#FFFF88"
+            y: listView.currentItem.y;
+        }
+        highlightFollowsCurrentItem: false
     }
 }
