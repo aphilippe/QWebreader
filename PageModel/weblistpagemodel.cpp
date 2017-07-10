@@ -24,3 +24,8 @@ QStringList WebListPageModel::webs()
 
     return _webs;
 }
+
+void WebListPageModel::selectItem(QString item)
+{
+    emit webIdChanged(item.toInt());
+}

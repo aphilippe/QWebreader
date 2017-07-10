@@ -16,12 +16,16 @@ public:
 
     QStringList webs();
 
+public slots:
+    void selectItem(QString item);
+
 private:
     QStringList _webs;
     std::shared_ptr<WebRepository> _webRepository;
 
 signals:
     void websChanged();
+    void webIdChanged(int newWebId);
 };
 
 #endif // WEBLISTPAGEMODEL_H
