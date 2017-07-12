@@ -18,6 +18,7 @@ Item {
         }
         height: parent.height
         width: 200
+        onWebIdChanged: webPage.webId = webId
     }
 
     WebPage{

@@ -19,6 +19,7 @@ public:
 
 public slots:
     void onUrlUpdated(const QString& url);
+    void onWebIdChanged(int webId);
 
 private:
     std::shared_ptr<Web> _web;

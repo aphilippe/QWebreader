@@ -4,9 +4,17 @@ import PageModel 1.0
 Item {
     id: mainPage
     property string url: pageModel.url
+    property int webId
+    onWebIdChanged: pageModel.onWebIdChanged(webId)
+
+    property alias loaderItem: pageLoader.item
 
     WebPageModel {
         id: pageModel
+        onUrlChanged:{
+            console.log(url)
+            loaderItem.url = url
+        }
     }
 
     Component {

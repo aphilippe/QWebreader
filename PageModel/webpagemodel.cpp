@@ -15,8 +15,6 @@ WebPageModel::~WebPageModel()
 
 QString WebPageModel::url()
 {
-    _web = _webRepo->get(1);
-
     if (_web != nullptr) {
         return QString::fromStdString(_web->getUrl());
     }
@@ -31,4 +29,10 @@ void WebPageModel::onUrlUpdated(const QString &url)
         _webRepo->save(_web);
 
     }
+}
+
+void WebPageModel::onWebIdChanged(int webId)
+{
+    _web = _webRepo->get(webId);
+    urlChanged();
 }
