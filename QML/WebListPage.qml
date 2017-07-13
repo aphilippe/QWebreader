@@ -42,8 +42,8 @@ Item {
         }
         highlightFollowsCurrentItem: false
 
-        onCurrentItemChanged: {
-            pageModel.selectItem(currentItem.text)
+        onCurrentIndexChanged: {
+            pageModel.selectItem(currentIndex)
         }
     }
 }

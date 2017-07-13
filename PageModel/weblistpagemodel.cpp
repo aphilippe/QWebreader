@@ -14,18 +14,20 @@ WebListPageModel::~WebListPageModel()
 
 QStringList WebListPageModel::webs()
 {
-    if (_webs.isEmpty())
+    if (_webs.empty())
     {
-        auto webs = _webRepository->getAll();
-        for_each(webs.begin(), webs.end(), [this](shared_ptr<Web> w) {
-           _webs.append(QString::number(w->getId()));
-        });
+        _webs = _webRepository->getAll();
     }
+    QStringList list;
+    for_each(_webs.begin(), _webs.end(), [&list](shared_ptr<Web> w) {
+        list.append(QString::fromStdString(w->getName()));
+    });
 
-    return _webs;
+
+    return list;
 }
 
-void WebListPageModel::selectItem(QString item)
+void WebListPageModel::selectItem(int index)
 {
-    emit webIdChanged(item.toInt());
+    emit webIdChanged(_webs[index]->getId());
 }

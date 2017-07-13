@@ -24,7 +24,9 @@ std::vector<std::shared_ptr<Web>> WebRepository::getAll()
             QJsonObject object = document.object();
             auto web = std::make_shared<Web>(
                         object["id"].toInt(),
-                        object["url"].toString().toStdString());
+                        object["url"].toString().toStdString(),
+                        object["name"].toString().toStdString()
+                    );
             _webs.push_back(web);
         }
     }
@@ -54,6 +56,7 @@ void WebRepository::save(std::shared_ptr<Web> web)
     QJsonObject object;
     object.insert("id", QJsonValue(web->getId()));
     object.insert("url", QJsonValue(QString::fromStdString(web->getUrl())));
+    object.insert("name", QJsonValue(QString::fromStdString(web->getName())));
 
     QJsonDocument document(object);
 

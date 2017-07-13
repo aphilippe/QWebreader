@@ -5,6 +5,7 @@
 #include <QQmlListProperty>
 
 class WebRepository;
+class Web;
 
 class WebListPageModel : public QObject
 {
@@ -17,10 +18,10 @@ public:
     QStringList webs();
 
 public slots:
-    void selectItem(QString item);
+    void selectItem(int index);
 
 private:
-    QStringList _webs;
+    std::vector<std::shared_ptr<Web>> _webs;
     std::shared_ptr<WebRepository> _webRepository;
 
 signals:
