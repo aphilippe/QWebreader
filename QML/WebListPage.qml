@@ -24,10 +24,32 @@ Item {
             property alias text: text.text
             width: parent.width
             height: 55
+
             Text {
                 id:text
+
+                anchors {
+                    fill: parent
+                    leftMargin: 10
+                    rightMargin: 10
+                }
+
                 text: modelData
+                clip: true
+                verticalAlignment: Text.AlignVCenter
             }
+            Rectangle {
+                height: 1
+                color: "lightgrey"
+                anchors {
+                    left: parent.left
+                    leftMargin: 5
+                    right: parent.right
+                    rightMargin: 5
+                    top: parent.bottom
+                }
+            }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: listView.currentIndex = index
